@@ -10,6 +10,9 @@ spring:
     username: root
     password: 122112
     driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 127.0.0.1
+    port: 6379
 #MyBatis-Plus配置
 mybatis-plus:
   configuration:

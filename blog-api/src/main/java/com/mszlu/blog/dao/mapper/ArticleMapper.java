@@ -7,10 +7,13 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mszlu.blog.dao.pojo.Article;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @Auther Song Kang
  * @Date 2022/2/8
  */
 @Component
 public interface ArticleMapper extends BaseMapper<Article> {
+    List<Article> listArchives();
 }

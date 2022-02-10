@@ -12,7 +12,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Result {
     /**是否成功*/
-    private boolean sussess;
+    private boolean success;
     /**编码*/
     private int code;
     /**信息*/
