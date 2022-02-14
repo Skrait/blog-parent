@@ -1,10 +1,13 @@
 package com.mszlu.blog.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.mszlu.blog.dao.mapper.ArticleBodyMapper;
 import com.mszlu.blog.dao.mapper.SysUserMapper;
+import com.mszlu.blog.dao.pojo.ArticleBody;
 import com.mszlu.blog.dao.pojo.SysUser;
 import com.mszlu.blog.service.LoginService;
 import com.mszlu.blog.service.SysUserService;
+import com.mszlu.blog.vo.ArticleBodyVo;
 import com.mszlu.blog.vo.ErrorCode;
 import com.mszlu.blog.vo.LoginUserVo;
 import com.mszlu.blog.vo.Result;
@@ -35,12 +38,18 @@ public class SysUserServiceImpl implements SysUserService {
         return sysUser;
     }
 
+    /**
+     * 获取User对象(初)
+     * @param account
+     * @param password
+     * @return
+     */
     @Override
     public SysUser findUser(String account, String password) {
         LambdaQueryWrapper<SysUser> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(SysUser::getAccount,account);
         queryWrapper.eq(SysUser::getPassword,password);
-        queryWrapper.select(SysUser::getAccount,SysUser::getId,SysUser::getAvatar,SysUser::getNickname);
+        queryWrapper.select(SysUser::getAccount,SysUser::getId,SysUser::getAvatar,SysUser::getNickname,SysUser::getCreateDate,SysUser::getEmail);
         //查询结果数量加以限制，提升查询效率
         queryWrapper.last("limit 1");
         return sysUserMapper.selectOne(queryWrapper);
@@ -66,6 +75,44 @@ public class SysUserServiceImpl implements SysUserService {
         loginUserVo.setAccount(sysUser.getAccount());
         return Result.success(loginUserVo);
     }
+
+    /**
+     * 根据账户查找用户
+     * @param account
+     * @return
+     */
+    @Override
+    public SysUser findUserByAcount(String account) {
+        LambdaQueryWrapper<SysUser> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(SysUser::getAccount,account);
+        queryWrapper.last("limit 1");
+
+
+        return sysUserMapper.selectOne(queryWrapper);
+    }
+
+    /**
+     * 保存
+     * @param sysUser
+     */
+    @Override
+    public void save(SysUser sysUser) {
+
+        this.sysUserMapper.insert(sysUser);
+    }
+
+    @Resource
+    private ArticleBodyMapper articleBodyMapper;
+
+    @Override
+    public ArticleBodyVo findArticleBodyById(Long bodyId) {
+        ArticleBody articleBody = articleBodyMapper.selectById(bodyId);
+        ArticleBodyVo articleBodyVo = new ArticleBodyVo();
+        articleBodyVo.setContent(articleBody.getContent());
+        return articleBodyVo;
+    }
+
+
 }
 
 

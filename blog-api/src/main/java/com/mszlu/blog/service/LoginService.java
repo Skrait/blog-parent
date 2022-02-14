@@ -1,15 +1,11 @@
-package com.mszlu.blog.service;/**
- * Author Peekaboo
- * Date 2022/2/10 14:31
- */
-
+package com.mszlu.blog.service;
 import com.mszlu.blog.dao.pojo.SysUser;
 import com.mszlu.blog.vo.Result;
 import com.mszlu.blog.vo.params.LoginParam;
 
 /**
- * @Auther Song Kang
- * @Date 2022/2/10
+ * Author Peekaboo
+ * Date 2022/2/10 14:31
  */
 public interface LoginService {
 
@@ -27,4 +23,11 @@ public interface LoginService {
      * @param token
      */
     Result logout(String token);
+
+    /**
+     * 登录
+     * @param loginParam
+     * @return
+     */
+    Result register(LoginParam loginParam);
 }

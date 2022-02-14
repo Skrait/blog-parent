@@ -1,5 +1,8 @@
 package com.mszlu.blog.dao.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -10,6 +13,8 @@ import java.io.Serializable;
  */
 @Data
 public class SysUser implements Serializable {
+
+    @TableId(type = IdType.ASSIGN_ID)
     private Long id;
 
     private String account;
