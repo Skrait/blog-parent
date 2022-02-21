@@ -1600,7 +1600,7 @@ function expandConfig(container, userConfig) {
 }
 
 // Handle selection preservation and TEXT_CHANGE emission
-// common to modification APIs
+// comon to modification APIs
 function modify(modifier, source, index, shift) {
   if (this.options.strict && !this.isEnabled() && source === _emitter4.default.sources.USER) {
     return new _quillDelta2.default();
@@ -7691,7 +7691,7 @@ var DIFF_EQUAL = 0;
 
 /**
  * Find the differences between two texts.  Simplifies the problem by stripping
- * any common prefix or suffix off the texts before diffing.
+ * any comon prefix or suffix off the texts before diffing.
  * @param {string} text1 Old string to be diffed.
  * @param {string} text2 New string to be diffed.
  * @param {Int} cursor_pos Expected edit position in text1 (optional)
@@ -7711,13 +7711,13 @@ function diff_main(text1, text2, cursor_pos) {
     cursor_pos = null;
   }
 
-  // Trim off common prefix (speedup).
+  // Trim off comon prefix (speedup).
   var commonlength = diff_commonPrefix(text1, text2);
   var commonprefix = text1.substring(0, commonlength);
   text1 = text1.substring(commonlength);
   text2 = text2.substring(commonlength);
 
-  // Trim off common suffix (speedup).
+  // Trim off comon suffix (speedup).
   commonlength = diff_commonSuffix(text1, text2);
   var commonsuffix = text1.substring(text1.length - commonlength);
   text1 = text1.substring(0, text1.length - commonlength);
@@ -7744,7 +7744,7 @@ function diff_main(text1, text2, cursor_pos) {
 
 /**
  * Find the differences between two texts.  Assumes that the texts do not
- * have any common prefix or suffix.
+ * have any comon prefix or suffix.
  * @param {string} text1 Old string to be diffed.
  * @param {string} text2 New string to be diffed.
  * @return {Array} Array of diff tuples.
@@ -7943,14 +7943,14 @@ function diff_bisectSplit_(text1, text2, x, y) {
 
 
 /**
- * Determine the common prefix of two strings.
+ * Determine the comon prefix of two strings.
  * @param {string} text1 First string.
  * @param {string} text2 Second string.
- * @return {number} The number of characters common to the start of each
+ * @return {number} The number of characters comon to the start of each
  *     string.
  */
 function diff_commonPrefix(text1, text2) {
-  // Quick check for common null cases.
+  // Quick check for comon null cases.
   if (!text1 || !text2 || text1.charAt(0) != text2.charAt(0)) {
     return 0;
   }
@@ -7975,13 +7975,13 @@ function diff_commonPrefix(text1, text2) {
 
 
 /**
- * Determine the common suffix of two strings.
+ * Determine the comon suffix of two strings.
  * @param {string} text1 First string.
  * @param {string} text2 Second string.
- * @return {number} The number of characters common to the end of each string.
+ * @return {number} The number of characters comon to the end of each string.
  */
 function diff_commonSuffix(text1, text2) {
-  // Quick check for common null cases.
+  // Quick check for comon null cases.
   if (!text1 || !text2 ||
       text1.charAt(text1.length - 1) != text2.charAt(text2.length - 1)) {
     return 0;
@@ -8014,7 +8014,7 @@ function diff_commonSuffix(text1, text2) {
  * @param {string} text2 Second string.
  * @return {Array.<string>} Five element Array, containing the prefix of
  *     text1, the suffix of text1, the prefix of text2, the suffix of
- *     text2 and the common middle.  Or null if there was no match.
+ *     text2 and the comon middle.  Or null if there was no match.
  */
 function diff_halfMatch_(text1, text2) {
   var longtext = text1.length > text2.length ? text1 : text2;
@@ -8032,7 +8032,7 @@ function diff_halfMatch_(text1, text2) {
    * @param {number} i Start index of quarter length substring within longtext.
    * @return {Array.<string>} Five element Array, containing the prefix of
    *     longtext, the suffix of longtext, the prefix of shorttext, the suffix
-   *     of shorttext and the common middle.  Or null if there was no match.
+   *     of shorttext and the comon middle.  Or null if there was no match.
    * @private
    */
   function diff_halfMatchI_(longtext, shorttext, i) {
@@ -8128,7 +8128,7 @@ function diff_cleanupMerge(diffs) {
         // Upon reaching an equality, check for prior redundancies.
         if (count_delete + count_insert > 1) {
           if (count_delete !== 0 && count_insert !== 0) {
-            // Factor out any common prefixies.
+            // Factor out any comon prefixies.
             commonlength = diff_commonPrefix(text_insert, text_delete);
             if (commonlength !== 0) {
               if ((pointer - count_delete - count_insert) > 0 &&
@@ -8144,7 +8144,7 @@ function diff_cleanupMerge(diffs) {
               text_insert = text_insert.substring(commonlength);
               text_delete = text_delete.substring(commonlength);
             }
-            // Factor out any common suffixies.
+            // Factor out any comon suffixies.
             commonlength = diff_commonSuffix(text_insert, text_delete);
             if (commonlength !== 0) {
               diffs[pointer][1] = text_insert.substring(text_insert.length -

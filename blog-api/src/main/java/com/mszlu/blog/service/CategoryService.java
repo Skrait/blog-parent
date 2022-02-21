@@ -1,11 +1,6 @@
-package com.mszlu.blog.service;/**
- * Author Peekaboo
- * Date 2022/2/13 22:49
- */
-
+package com.mszlu.blog.service;
 import com.mszlu.blog.vo.CategoryVo;
-
-import java.util.List;
+import com.mszlu.blog.vo.Result;
 
 /**
  * @Auther Song Kang
@@ -13,4 +8,10 @@ import java.util.List;
  */
 public interface CategoryService {
     CategoryVo findCategoryById(Long categoryId);
+
+    /**
+     *
+     * @return
+     */
+    Result findAll();
 }

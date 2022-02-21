@@ -7,6 +7,7 @@ import com.mszlu.blog.dao.pojo.SysUser;
 import com.mszlu.blog.vo.ArticleBodyVo;
 import com.mszlu.blog.vo.CategoryVo;
 import com.mszlu.blog.vo.Result;
+import com.mszlu.blog.vo.UserVo;
 
 import java.util.List;
 
@@ -15,6 +16,8 @@ import java.util.List;
  * @Date 2022/2/9
  */
 public interface SysUserService {
+
+    UserVo findUserVoById(Long id);
 
     SysUser findUserById(Long id);
 

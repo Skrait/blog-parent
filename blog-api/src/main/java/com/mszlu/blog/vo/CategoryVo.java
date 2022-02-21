@@ -6,11 +6,12 @@ import lombok.Data;
 /**
  * Author Peekaboo
  * Date 2022/2/13 22:24
+ * 文章目录Vo
  */
 @Data
 public class CategoryVo {
 
-    private String id;
+    private Long id;
 
     /**
      * 图标路径

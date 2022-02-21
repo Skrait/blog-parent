@@ -7,10 +7,8 @@ import com.mszlu.blog.dao.pojo.ArticleBody;
 import com.mszlu.blog.dao.pojo.SysUser;
 import com.mszlu.blog.service.LoginService;
 import com.mszlu.blog.service.SysUserService;
-import com.mszlu.blog.vo.ArticleBodyVo;
-import com.mszlu.blog.vo.ErrorCode;
-import com.mszlu.blog.vo.LoginUserVo;
-import com.mszlu.blog.vo.Result;
+import com.mszlu.blog.vo.*;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -27,6 +25,19 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Resource
     private LoginService loginService;
+
+    @Override
+    public UserVo findUserVoById(Long id) {
+        SysUser sysUser = sysUserMapper.selectById(id);
+        if (sysUser == null){
+            sysUser.setNickname("默认水镜先生名");
+            sysUser.setId(1L);
+            sysUser.setAvatar("/static/img/logo.b3a48c0.png");
+        }
+        UserVo userVo = new UserVo();
+        BeanUtils.copyProperties(sysUser,userVo);
+        return userVo;
+    }
 
     @Override
     public SysUser findUserById(Long id) {
